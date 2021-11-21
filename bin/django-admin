@@ -1,4 +1,4 @@
-#!/home/george/Projects/Django_Projects/id_card_project/bin/python
+#!/home/george/Projects/Django_ID_Card/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
