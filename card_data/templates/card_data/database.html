@@ -1,27 +1,48 @@
 {% extends "card_data/base.html" %}
 
 {% block title %} Contact Info {% endblock %}
+<!doctype html>
+<html>
+<head>
+    <style type="text/css">
+        #data ul a:hover {
+            color:#f1f1f1;
+            text-decoration: underline;
 
+    
+    
+}
+    </style>
+<head>
 
-{% block page %}
-<h1>Database</h1>
-{% endblock %}
+</head>
 
-{% block content %}
+<body>
+    {% block page %}
+    <h1>Database</h1>
+    {% endblock %}
+    
+    {% block content %}
 
-<div id='data'>
-    {% if user.is_authenticated %}
-        {% if user.is_superuser %}
-            <ul>{% for item in data. %}
-                <li>{{item.first_name}} </li>
-            </ul>{% endfor %}
-        {% endif %}   
-    {% else %}
-        <h4>To access database <a href="/login">Log In</a> here</h4> 
+    
+    
+    <div id='data'>
+        {% if user.is_authenticated %}
+            {% if user.is_superuser %}
+                <ul> <p>ID Card List</p>
+                {% for item in data %}
+                    <li><p><a href="/database/{{item.id}}">
+                        {{item.id}}-{{item.first_name}} {{item.last_name}} {{item.personal_no}}</a></p>
+                        
+                    </li>
+                {% endfor %}    
+                </ul>
+            {% endif %}   
+        {% else %}
+            <h4>To access database <a href="/login">Log In</a> here</h4>                 
+        {% endif %}
+    </div>
+    {% endblock %}
+</body>
 
-
-            
-            
-    {% endif %}
-</div>
-{% endblock %}
+</html>
