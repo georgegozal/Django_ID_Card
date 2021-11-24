@@ -12,14 +12,15 @@
             <ul> 
             {% for item in data_list %}
 
-                <li><p><a href="/database/{{item.department}}/{{item.id}}">
-                {{item.id}}-{{item.first_name}} {{item.last_name}} {{item.personal_no}}</a></p>
+                <li>
+                    <p><a href="/database/{{item.department}}/{{item.id}}">
+                    {{item.first_name}} {{item.last_name}} {{item.personal_no}}</a></p>
             
-        </li>
-    {% endfor %}    
-    </ul>
-{% endif %}   
-{% else %}
-<h4>To access database <a href="/login">Log In</a> here</h4>                 
-{% endif %}
+                </li>
+            {% endfor %}    
+            </ul>
+        {% endif %}   
+        {% else %}
+            <h4>To access database <a href="/login">Log In</a> here</h4>                 
+    {% endif %}
 {% endblock %}
