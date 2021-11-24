@@ -1,0 +1,25 @@
+{% extends "card_data/base.html" %}
+{% block title %} Contact Info {% endblock %}
+
+{% block page %}
+    <h1>Database</h1>
+    <h5>Personal Data</h5>
+{% endblock %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        {% if user.is_superuser %}
+            <ul> 
+            {% for item in data_list %}
+
+                <li><p><a href="/database/{{item.department}}/{{item.id}}">
+                {{item.id}}-{{item.first_name}} {{item.last_name}} {{item.personal_no}}</a></p>
+            
+        </li>
+    {% endfor %}    
+    </ul>
+{% endif %}   
+{% else %}
+<h4>To access database <a href="/login">Log In</a> here</h4>                 
+{% endif %}
+{% endblock %}

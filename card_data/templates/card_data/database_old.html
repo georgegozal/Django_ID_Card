@@ -1,0 +1,29 @@
+{% extends "card_data/base.html" %}
+
+{% block title %} Contact Info {% endblock %}
+
+    {% block page %}
+    <h1>Database</h1>
+    {% endblock %}
+    
+    {% block content %}
+
+    
+    
+    <div id='data'>
+        {% if user.is_authenticated %}
+            {% if user.is_superuser %}
+                <ul> <p>ID Card List</p>
+                {% for item in data %}
+                    <li><p><a href="/database/{{item.id}}">
+                        {{item.id}}-{{item.first_name}} {{item.last_name}} {{item.personal_no}}</a></p>
+                        
+                    </li>
+                {% endfor %}    
+                </ul>
+            {% endif %}   
+        {% else %}
+            <h4>To access database <a href="/login">Log In</a> here</h4>                 
+        {% endif %}
+    </div>
+    {% endblock %}

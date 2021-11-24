@@ -1,48 +1,21 @@
 {% extends "card_data/base.html" %}
 
-{% block title %} Contact Info {% endblock %}
-<!doctype html>
-<html>
-<head>
-    <style type="text/css">
-        #data ul a:hover {
-            color:#f1f1f1;
-            text-decoration: underline;
+{% block title %} Database {% endblock %}
 
-    
-    
-}
-    </style>
-<head>
-
-</head>
-
-<body>
-    {% block page %}
+{% block page %}
     <h1>Database</h1>
-    {% endblock %}
-    
-    {% block content %}
+    <h5>Department List</h5>
+{% endblock %}
 
-    
-    
-    <div id='data'>
-        {% if user.is_authenticated %}
-            {% if user.is_superuser %}
-                <ul> <p>ID Card List</p>
-                {% for item in data %}
-                    <li><p><a href="/database/{{item.id}}">
-                        {{item.id}}-{{item.first_name}} {{item.last_name}} {{item.personal_no}}</a></p>
-                        
-                    </li>
-                {% endfor %}    
-                </ul>
-            {% endif %}   
-        {% else %}
-            <h4>To access database <a href="/login">Log In</a> here</h4>                 
-        {% endif %}
+
+
+{% block content %}
+    <div id='category'>
+        {% for item in department %}
+            <a href='/database/{{item.department}}'>{{item.department}}</a><br>
+        {% endfor %}    
     </div>
-    {% endblock %}
-</body>
+    <div id='list'>
 
-</html>
+    </div>
+{% endblock %}
