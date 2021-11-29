@@ -41,7 +41,8 @@ INSTALLED_APPS = [
 
     'crispy_forms',
     'card_data',
-    'login.apps.LoginConfig'
+    'login.apps.LoginConfig',
+    'pdf_csv_output',
 ]
 
 MIDDLEWARE = [

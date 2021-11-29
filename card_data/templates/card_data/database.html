@@ -10,12 +10,19 @@
 
 
 {% block content %}
-    <div id='category'>
-        {% for item in department %}
-            <a href='/database/{{item.department}}'>{{item.department}}</a><br>
-        {% endfor %}    
-    </div>
-    <div id='list'>
+{% if user.is_authenticated %}
+    {% if user.is_superuser %}
+        <a href='/database/create/'>Create New ID</a><br><br>
+        <div id='category'>
+            {% for item in department %}
+                <a href='/database/{{item.department}}'>{{item.department}}</a><br>
+            {% endfor %}    
+        </div>
+        <div id='list'>
 
-    </div>
+        </div>
+    {% else %}
+        <h4>To access database <a href="/login">Log In</a> here</h4>                 
+    {% endif %}
+{% endif %}
 {% endblock %}

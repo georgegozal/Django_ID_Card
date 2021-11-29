@@ -1,0 +1,78 @@
+
+{% extends "card_data/base.html" %}
+
+{% block title %} Database {% endblock %}
+
+{% block page %}
+    <h1>Database</h1>
+{% endblock %}
+
+
+
+{% block content %}
+
+{% if user.is_authenticated %}
+    {% if user.is_superuser %}
+        <div id='single_id'>
+            <div id=photo>
+                <img src='{{card.photo.url}}' , style="width:200px;height:270px;"><br>
+            </div>
+        
+            <div id='info'>
+                <table>
+                    <tr>
+                        <td>Name:</td>
+                        <td name='name'>{{card.first_name}}</td>
+                    </tr>
+                    <tr>
+                        <td>Surname:</td>
+                        <td>{{card.last_name}}</td>
+                        </tr>
+                    <tr>
+                        <td>Sex:</td>
+                        <td>{{card.sex}}</td>
+                    </tr>
+                    <tr>
+                        <td>ID No:</td>
+                        <td>{{card.personal_no}}</td>
+                        </tr>
+                    <tr>
+                        <td>Birth Place:</td>
+                        <td>{{card.birth_place}}</td>
+                    </tr>
+                    <tr>
+                        <td>Birth Date:</td>
+                        <td>{{card.birth_date}}</td>
+                    </tr>
+                    <tr>
+                        <td>Department:</td>
+                        <td>{{card.department}}</td>
+                    </tr>
+
+                    {% for info in card.other_info.all %}
+                        <tr>
+                            <td>Other Info</td>
+                            <td>{{info}}</td> 
+                        </tr>
+                            
+                    {% endfor %}    
+                    </tr>
+                </table>
+
+            </div>
+        
+        </div>
+        <form method='GET' action='#'>
+
+            <div class="input-group mb-3">
+                
+                <input type='submit', name='excel', class='btn btn-success', value='Export To Excel'><br></br>            
+                <button  name='pdf', class='btn-success', onclick=window.print()>Print Page</button>
+                <!--<button onclick="window.print()">Print this page</button>-->
+            </div>
+        </form>
+    {% endif %}
+{% endif %}
+
+{% endblock %}
+

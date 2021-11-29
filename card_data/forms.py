@@ -4,36 +4,27 @@ from django import forms
 from django.core.exceptions import ValidationError
 
 class CreateID(forms.Form):
-    first_name  = forms.CharField(max_length=120,null=False)
-    last_name   = forms.CharField(max_length=120,null=False)
-    personal_no = forms.CharField(max_length=11,null=False,unique=True)
-    birth_place = forms.CharField(max_length=120,null=False)
+    first_name  = forms.CharField(max_length=120)
+    last_name   = forms.CharField(max_length=120)
+    personal_no = forms.CharField(max_length=11)
+    birth_place = forms.CharField(max_length=120)
     birth_date  = forms.DateField()
-    sex         = forms.CharField(null=False,choices=(('f','female'),('m','male')),max_length=20)
-    photo       = forms.ImageField(upload_to='images/')
-    department  = forms.ForeignKey('Department', on_delete=forms.SET_NULL, null=True)
-    drivers_license = forms.CharField(max_length=20, null=False, choices =(('Yes','Yes'),('No','No')))
-
-
-    def __str__(self):
-        return f'{self.first_name} {self.last_name}  {self.personal_no}'
-
-
-    def clean(self):
-        if not self.personal_no.isnumeric() :
-            raise ValidationError(
-                "Personal ID Number should be numbers!")
-        
-        if not self.first_name.isalpha() or  not self.last_name.isalpha():
-            raise ValidationError(
-                "First Name and Last Name should be letters!") 
+    sex         = forms.CharField(max_length=20)
+    photo       = forms.ImageField()
+    department  = forms.CharField(max_length=120)
+    #drivers_license = forms.CharField(max_length=100, choices = (('აქვს','აქვს'),('არ აქვს', 'არ აქვს '))
 
 
 
-class DepartmentForm(forms.Form):
+
+
+
+
+
+#class DepartmentForm(forms.Form):
     
-    department = forms.CharField(max_length=120,unique=True,null=False)
+#    department = forms.CharField(max_length=120,unique=True,null=False)
 
-    def __str__(self):
-        return self.department
+#     def __str__(self):
+#         return self.department
 
