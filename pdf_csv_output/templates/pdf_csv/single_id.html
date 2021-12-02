@@ -27,7 +27,7 @@
                     <tr>
                         <td>Surname:</td>
                         <td>{{card.last_name}}</td>
-                        </tr>
+                    </tr>
                     <tr>
                         <td>Sex:</td>
                         <td>{{card.sex}}</td>
@@ -35,7 +35,7 @@
                     <tr>
                         <td>ID No:</td>
                         <td>{{card.personal_no}}</td>
-                        </tr>
+                    </tr>
                     <tr>
                         <td>Birth Place:</td>
                         <td>{{card.birth_place}}</td>
@@ -56,18 +56,18 @@
                         </tr>
                             
                     {% endfor %}    
-                    </tr>
+                    
                 </table>
 
             </div>
         
         </div>
-        <form method='GET' action='#'>
+        <form method='GET', action='#'>
 
             <div class="input-group mb-3">
                 
                 <input type='submit', name='excel', class='btn btn-success', value='Export To Excel'><br></br>            
-                <button  name='pdf', class='btn-success', onclick=window.print()>Print Page</button>
+                <input type='submit',  name='pdf', class='btn-success', value='Export To PDF'>
                 <!--<button onclick="window.print()">Print this page</button>-->
             </div>
         </form>
